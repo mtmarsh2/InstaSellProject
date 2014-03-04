@@ -1,0 +1,107 @@
+{% extends "base1.html" %}
+
+{% load i18n %}
+{% load mezzanine_tags staticfiles %}
+{% load app_filter %}
+
+
+{% block title %} Profile {% endblock %}
+
+
+
+{% block extra_css %}
+<link rel="stylesheet" href="{% static "newaccounts/css/profile.css" %}" >
+<link href="{{ STATIC_URL }}ajaxuploader/css/fileuploader.css" media="screen" rel="stylesheet" type="text/css" />
+{% endblock %}
+
+{% block main %}
+	<div class = "row">
+		<div class = "profile_picture_container">
+			<img src = "{{MEDIA_URL}}{{user_profile.profilepicture}}" >
+		</div>
+		<div class = "profile_info_container">
+			<p> Username: {{ user_profile }}  </p>
+			{% if same_user %}
+			<a href="/accounts/password_change">Password Change</a>
+			<a href="/accounts/email_change">Email Change</a>
+			{% endif %}
+		</div>
+	</div>
+
+	<hr class = "profile_divider">
+	
+	
+	
+
+	{% if same_user %}
+	
+
+	<!-- Form for uploading a dormpicture -->
+	<script type="text/javascript" src="{{STATIC_URL}}/csrf.js"></script>
+	<button type = "button" class = "btn btn-default upload_dormpic_button"> 
+		Upload Dorm Picture
+	</button>
+
+	<div class = "form_modal" style = "display: none;">
+		<div class = "uploadformcontainer">
+			<form class = "form-horizontal" role = "form" action = "" method="post" enctype="multipart/form-data"> 
+			{% csrf_token %}
+			{{form.as_p}}
+			<div id="file-uploader">       
+        		<noscript>          
+            		<p>Please enable JavaScript to use file uploader.</p>
+       		 	</noscript>   
+       		 </div>
+			<input class = 'form_modal_submit' type = "submit" value = "Submit" />
+			</form>
+		</div>
+		<div id = "floated_ajax_container" >
+			<div id = "image_ajax_container">
+
+			</div>
+		</div>
+
+	</div>
+
+	
+
+	
+
+{% endif %}
+
+{% endblock %}
+
+{% block endjs %}
+
+<script src="{% static "newaccounts/js/profile.js" %}"> </script>
+<script src="{{ STATIC_URL }}ajaxuploader/js/fileuploader.js"></script>
+    <script>
+            $(function(){
+            var uploader = new qq.FileUploader({
+            	debug: true,
+                action: '{% url "my_ajax_upload" %}',
+                element: $('#file-uploader')[0],
+                multiple: false,
+                onComplete: function(id, fileName, responseJSON) {
+                    if(responseJSON.success) {
+                        alert("success!");
+                        add_image_to_page(responseJSON['path'])
+                    } else {
+                        alert("upload failed!");
+                    }
+                },
+                onAllComplete: function(uploads) {
+                    // uploads is an array of maps
+                    // the maps look like this: {file: FileObject, response: JSONServerResponse}
+                    alert("All complete!");
+                },
+                params: {
+                    'csrf_token': '{{ csrf_token }}',
+                    'csrf_name': 'csrfmiddlewaretoken',
+                    'csrf_xname': 'X-CSRFToken',
+                },
+            });
+            });
+        </script>
+
+{% endblock %}

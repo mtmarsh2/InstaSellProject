@@ -1,0 +1,19 @@
+{% extends "base1.html" %}
+{% load url from future %}
+
+{% block main %}
+
+	{% if form.errors %}
+	<p> Username/Password combination not found </p>
+	{% endif %}
+
+	<form method="post" action="/accounts/login/"> {% csrf_token %}
+		<label for = "username"> User name: </label>
+		<input type="text" name = "username" value = "" id = "username">
+		<label for = "username"> Password: </label>
+		<input type="password" name = "password" value = "" id = "password">
+
+		<input type = "submit" value = "login">
+	</form>
+
+{% endblock %}

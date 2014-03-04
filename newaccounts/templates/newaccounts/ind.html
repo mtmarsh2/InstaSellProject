@@ -1,0 +1,44 @@
+{% extends "base.html" %}
+{% block content %}
+<img src="{{ STATIC_URL }}/img/myfiles.jpg"/>
+	{% for line in myfile %}
+	<p>{{line}}</p>
+	{% endfor %}
+	<section id="content">
+		
+		<div id="padding-content"><!-- padding-content -->
+		 
+		     <form id="text_editor">
+			<textarea id="code"></textarea>
+		     </form>
+		     
+		     <div id="instant_chat">
+			<form>
+				<textarea rows="3" cols="49"></textarea>
+			</form>
+		     </div>
+		     
+		     <div id="friends_online_box">
+			<h3>Online Friends</h3>
+		     </div>
+		     
+		</div><!-- padding-content -->
+		
+	</section>
+	
+	
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.7.1/jquery.min.js"></script>
+    <script src="/socket.io/socket.io.js"></script>
+    <script>
+      var socket = io.connect('http://127.0.0.1:3000');
+      var code = document.getElementById('code');
+      $(code).keyup(function() {
+        socket.emit('code', { text: code.value });
+        //return true;
+      });
+      socket.on('push code', function (data) {
+	console.log(data);
+        $(code).val(data.text);
+      });
+    </script>
+    {% endblock %}

@@ -1,0 +1,119 @@
+<!DOCTYPE HTML>
+<html>
+<head>
+	<title>Code Blue</title>
+	
+	<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+	
+	<style>
+		@import url("./css/reset.css");
+		@import url("./css/common.css");
+		@import url("./css/desktop.css");
+		.friends-online, .friends-offline
+		{
+			display: block;
+			width: 16px;
+			height: 16px;
+			background: url("./img/online-status.png") no-repeat top left;
+			padding-left: 18px
+		}
+		.friends-online
+		{
+		}
+		.friends-offline
+		{
+			background-position: left -16px;
+		}
+	</style>
+</head>
+<body>
+	<header id="header">
+		<h1 id="header-title"><a href="">Code Blue</a></h1>
+
+		<nav id="header-nav">
+			<ul>
+				<li><a href="">What's Code Blue</a></li>
+				<li><a href="">Login</a></li>
+				<li><a href="">Sign Up</a></li>
+			</ul>
+		</nav>
+		
+		<div class="clear"></div>
+		
+	</header>
+	
+	<section id="content">
+		
+		<div id="padding-content">
+			
+			<h2>Manage My Account</h2>
+			
+			<div class="content-2-column-left">
+				
+				<nav class="menu">
+					<p><strong><img src="./img/boy_3.png" alt="" width="24" height="24" /> Martin Scott</strong></p>
+					<ul>
+						<li><a href="">Friends</a></li>
+						<li><a href="">Edit Information</a></li>
+						<li><a href="">Change Password</a></li>
+						<li><a href="">Delete Account</a></li>
+					</ul>
+				</nav>
+				
+			</div>
+			
+			<div class="content-2-column-right">
+				
+				<table>
+					
+					<caption><h3>Friends</h3></caption>
+					
+					<thead>
+						<tr>
+							<th>Your friend</th>
+							<th>Online Status</th>
+							<th>Remove</th>
+						</tr>
+					</thead>
+					
+					<tbody>
+						
+						<tr>
+							<th><img src="./img/boy_3.png" alt="" /> Martin Scott</th>
+							<td><span class="friends-online">Online</span></td>
+							<td><a href="">Remove</a></td>
+						</tr>
+						
+						<tr>
+							<th><img src="./img/boy_3.png" alt="" /> Phil Anderson</th>
+							<td><span class="friends-offline">Offline</span></td>
+							<td><a href="">Remove</a></td>
+						</tr>
+						
+					</tbody>
+					
+				</table>
+				
+			</div>
+			
+			<div class="clear"></div>
+
+		</div>
+		
+	</section>
+	
+	<footer id="footer">
+		
+		<nav id="footer-nav">
+			<ul>
+				<li><a href="about.html">About</a></li>
+				<li><a href="">Legal</a></li>
+				<li><a href="">Github</a></li>
+				<li><a href="contact.html">Contact</a></li>
+			</ul>
+		</nav>
+		
+	</footer>
+	
+</body>
+</html>

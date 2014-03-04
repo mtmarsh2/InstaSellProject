@@ -1,0 +1,28 @@
+.individualimage > a > img {
+	height: auto;
+}
+
+.individualimagecontainer {
+	border-width: 5px;
+	border-style: solid;
+	width:100%;
+	-webkit-box-sizing: border-box; /* Safari/Chrome, other WebKit */
+    -moz-box-sizing: border-box;    /* Firefox, other Gecko */
+    box-sizing: border-box;  
+}
+
+.sellpostcontainer {
+	text-align: left;
+	margin: 0 auto;
+
+}
+
+.rating {
+
+  direction: rtl;
+}
+
+
+.stars {
+	color:#ffd700 ;
+}

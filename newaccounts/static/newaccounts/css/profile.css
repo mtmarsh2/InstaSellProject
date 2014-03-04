@@ -1,0 +1,89 @@
+.upload_sellpost_button {
+	display: block;
+}
+
+.transparencydiv {
+
+	background-color: #000;
+	position: fixed;
+	top: 0;
+	right: 0;
+	bottom: 0;
+	left: 0;
+	opacity: 0.5;
+	z-index: 1000;
+}
+
+.form_modal {
+	margin: 0 auto;
+	position: fixed; 
+	padding: 15px;
+	width: 900px;
+	border-radius: 20px;
+	z-index: 2000;
+	background-color: #00BFFF;	
+	border-color: #000000;
+	border-style: solid;
+	
+}
+
+.close_modal {
+	z-index: 2000;
+	position: fixed; 
+}
+
+.profile_picture_container {
+	float: left;
+}
+
+.profile_divider {
+	height: 5px;
+}
+
+.uploadformcontainer > form > p > label {
+	display:inline;
+	float:left;
+}
+
+.uploadformcontainer {
+	width:75%;
+}
+
+#image_ajax_container {
+	
+}
+
+#floated_ajax_container {
+	float:right;
+	width:25%;
+}
+#image_ajax_container > img {
+	max-width: 100%;
+	height:auto;
+	width:auto;
+}
+
+#delete_ajax_picture {
+	margin: 0 auto;
+}
+
+#delete_ajax_button_container {
+	margin-top: 10px;
+	text-align: center;
+}
+
+.form_error {
+	color: red;
+}
+
+.row {
+	margin-left: 0px;
+}
+
+.container > .row > .span3 {
+	margin-left: 0px;
+}
+
+.container > .row > .span9 {
+	margin-left: 20px;
+}

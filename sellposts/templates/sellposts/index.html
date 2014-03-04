@@ -1,0 +1,90 @@
+{% extends "base1.html" %}
+
+{% load i18n %}
+{% load mezzanine_tags staticfiles %}
+{% load app_filter %}
+
+
+
+{% block breadcrumb_menu %}
+<li class="active">{% trans "Home" %}</li>
+{% endblock %}
+
+{% block extra_css %}
+<link rel = "stylesheet" href="{% static "sellposts/css/home.css" %}">
+{% endblock %}
+
+{% block abovedivider %}
+
+<section class="webdesigntuts-workshop searchformcontainer">
+	<form action="searchsellposts" method="get" action="/search/">		    
+		<input class = "search" type = "text" placeholder= "Enter type of item here!" name = "q" />	    	
+		<button>Search</button>
+	</form>
+</section>
+
+{% endblock %}
+
+{% block main %}
+
+	
+	{% blocktrans %}
+	<h2>Welcome to InstaSell!</h2>
+	{% endblocktrans %}
+
+	{% for sellpost in sellposts %}
+
+
+	<!-- First Iteration add opening div for row -->
+
+		{% if forloop.counter0|apply_modulo:3 == 0 %} 
+
+		<div class="row sellpost{{forloop.counter0}}"> 
+
+		{% endif %}
+
+			<div class = "col-md-6" id = "column{{forloop.counter0}}">
+				<a href = '{{sellpost.image}}/sellposttures'>
+					<img src = "{{sellpost.image.url|get_url_for_thumbnail}}">
+				</a>
+			
+
+				<div class = "sellpostinfocontainer">
+
+					<h4 class = "sellposttitle">
+						Title: {{sellpost.title}}
+					</h4>
+
+					<p> <strong>User:</strong> {{sellpost.user}} </p>
+
+					<div class="sellposttagcontainer">
+					<h5>Tags: </h5>
+						{% if sellpost.tags %}
+						{% else %}
+						<p>No categories were provided</p>
+						{% endif %}
+					</div>
+
+
+				</div>
+			</div>
+
+		<!-- Last Iteration add closing div for row -->
+
+		{% if forloop.counter0|apply_modulo:3 == 2 or forloop.last %} 
+
+		</div> 
+
+		{% endif %}
+
+	{% endfor %}
+
+{% endblock %}
+
+
+{% block endjs %}
+<script type="text/javascript">
+    
+</script>
+<script src="{% static "sellposts/js/home.js" %}"> </script>
+{% endblock %}

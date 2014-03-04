@@ -1,0 +1,16 @@
+{% extends "base1.html" %}
+{% block title %} Email Change {% endblock %}
+{% block main %}
+
+{% if errors %}
+	{% for error in errors %}
+	<p>{{error}}</p>
+	{% endfor %}
+{% endif %}
+<p>Current Email: {{user.email}}</p>
+<form action = "" method = "POST"> {% csrf_token %}
+	{{ form.as_p  }}
+	<input type = "submit" value = "Submit" />
+</form>
+
+{% endblock %}

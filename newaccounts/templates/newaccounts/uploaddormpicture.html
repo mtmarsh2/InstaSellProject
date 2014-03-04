@@ -1,0 +1,15 @@
+{% extends "base1.html" %}
+{% block title %} Profile {% endblock %}
+
+{% block main %}
+<p>Hi</p>
+<p> Username: {{ user_profile }}  </p>
+<p> User Image: </p>
+<img src = "{{MEDIA_URL}}{{user_profile.profilepicture}}" >
+
+{% if same_user %}
+<a href="/accounts/password_change">Password Change</a>
+<a href="/accounts/email_change">Email Change</a>
+{% endif %}
+
+{% endblock %}

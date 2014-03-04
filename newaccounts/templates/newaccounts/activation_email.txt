@@ -1,0 +1,1 @@
+This is the text for the email. Click here: {{site}}/activate/{{activation_key}} . You have this many days to activate: {{expiration_days}}.

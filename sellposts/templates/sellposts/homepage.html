@@ -1,0 +1,48 @@
+{% extends "base1.html" %}
+
+{% load i18n %}
+{% load mezzanine_tags staticfiles %}
+
+{% block meta_title %}{% trans "InstaSell" %}{% endblock %}
+{% block title %}{% trans "InstaSell" %}{% endblock %}
+
+
+{% block breadcrumb_menu %}
+<li class="active">{% trans "Home" %}</li>
+{% endblock %}
+
+{% block extra_css %}
+<link rel="stylesheet" href="{% static "sellposts/css/home.css" %}" >
+{% endblock %}
+
+{% block main %}
+{% blocktrans %}
+<h2>Welcome to InstaSell!</h2>
+{% endblocktrans %}
+
+{% for sellpost in sellposts %}
+
+<!-- {% if isequal modulo forloopcounter0 1 %}
+<p> Current iteration: {{forloopcounter0}} index by 0 </p>
+-->
+
+{% endif %}
+{% endfor %}
+
+
+
+
+
+
+
+{% endblock %}
+
+
+{% block endjs %}
+<script type="text/javascript">
+    sellpoststitles = {{sellposttitles|safe}}
+    sellpostsurls = {{sellposturls|safe}}
+    sellposttags = {{sellposttags|safe}}
+</script>
+<script src="{% static "sellposts/js/script.js" %}"> </script>
+{% endblock %}

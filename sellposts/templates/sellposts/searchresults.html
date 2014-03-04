@@ -1,0 +1,61 @@
+{% extends "base1.html" %}
+
+{% load i18n %}
+{% load mezzanine_tags staticfiles %}
+
+{% block meta_title %}{% trans "InstaSell" %}{% endblock %}
+{% block title %}{% trans "InstaSell" %}{% endblock %}
+
+{% block breadcrumb_menu %}
+<li class="active">{% trans "Home" %}</li>
+{% endblock %}
+
+{% block extra_css %}
+<link rel="stylesheet" href="{% static "sellposts/css/individualsellpost.css" %}" >
+{% endblock %}
+
+{% block main %}
+{% blocktrans %}
+
+{% endblocktrans %}
+
+
+
+{% csrf_token %}
+
+<p> You searched for: {{query}} </p>
+
+{% if not results %}
+
+<p> There were no items related to {{query}}, please search for another term </p>
+
+{% else %}
+
+<p> There were {{results|length}} results for your search. </p>
+
+{% endif %}
+
+{% for result in results %}
+<div class="sellpost" >
+    <img src='{{ MEDIA_URL }}{% thumbnail result.image.url 300 300%}' />
+
+    <div class="sellpostinfo" >
+    {{result.title}}
+    {{result.description}}
+    </div>
+
+</div>
+{% endfor %}
+
+
+{% endblock %}
+
+{% block disqus_comments %}
+    
+   
+    
+{% endblock %}
+
+{% block endjs %}
+
+{% endblock %}

@@ -1,0 +1,67 @@
+<!DOCTYPE HTML>
+<html>
+<head>
+	<title>{% block title %}Code Blue{% endblock %}</title>
+	
+	<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+	
+		<link href="{{STATIC_URL}}css/desktop.css" rel="stylesheet" type="text/css"  />
+		<link href="{{STATIC_URL}}css/common.css" rel="stylesheet" type="text/css"  />
+		<link href="{{STATIC_URL}}css/reset.css" rel="stylesheet" type="text/css"  />
+</head>
+<body>
+	<header id="header">
+		<h1 id="header-title"><a href="/">Code Blue</a></h1>
+
+		<nav id="header-nav">
+			<ul>
+				<li><a href="/accounts/test">Test</a></li>
+				<li><a href="/accounts/profilesearch">Profile Search</a></li>
+				<li><a href="/about">What's Code Blue</a></li>
+				{% if user.is_authenticated %}
+				<li><a href="/accounts/profile">{{ user }}</a></li>
+				<li><a href="/accounts/sign_out">Logout</a></li>
+				{% else %}
+				<li><a href="/accounts/sign_in">Login</a></li>
+				<li><a href="/accounts/sign_up">Sign Up</a></li>
+				{% endif %}	
+			</ul>
+		</nav>
+		
+		<div class="clear"></div>
+		
+	</header>
+
+<body>
+	
+	 {% block content %}
+    <div id="content">
+       
+    <section id="content">
+		
+		<div id="padding-content">
+                  
+                     <img class="speechCycleImage" src="img/speechCycle.png" />
+
+		</div>
+		
+	</section>
+		
+    </div>
+     {% endblock %}
+
+<footer id="footer">
+		
+		<nav id="footer-nav">
+			<ul>
+				<li><a href="/about">About</a></li>
+				<li><a href="">Legal</a></li>
+				<li><a href="https://github.com/acm-uiuc/CodeBlue">Github</a></li>
+				<li><a href="/contact">Contact</a></li>
+			</ul>
+		</nav>
+		
+	</footer>
+	
+</body>
+</html>
